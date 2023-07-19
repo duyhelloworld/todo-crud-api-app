@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo App</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.29.1/moment.min.js"></script>
+</head>
+<body>
+    <h1>Todo App</h1>
+
+    <div id="todos">
+        <!-- Khu vực hiển thị danh sách todo -->
+    </div>
+
+    <h2>Add New Todo</h2>
+
+    <form id="addTodoForm">
+        <label for="shortName">Short Name:</label>
+        <input type="text" id="shortName" name="shortName" required><br><br>
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required><br><br>
+
+        <input type="text" id="createdAt" name="createdAt" required hidden>
+
+        <input type="submit" value="Add Todo">
+    </form>
+
+    <script src="/src/main/resources/static/js/app.js"></script>
+</body>
+</html>

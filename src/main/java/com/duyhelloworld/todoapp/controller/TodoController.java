@@ -43,7 +43,7 @@ public class TodoController {
     @PutMapping("{id}")
     public Todo updateTodo(
         @PathVariable(required = false) Long id,
-        @RequestBody(required = false) Todo todo 
+        @RequestBody(required = false) Todo todo
     ) {
         return service.updateTodo(id, todo);
     }
