@@ -1,28 +1,5 @@
-const url = "http://localhost:8080/api/v1/todo"
-
-// Gửi yêu cầu GET để lấy danh sách todo và hiển thị trên giao diện
-axios.get(url)
-    .then(function (response) {
-        var todos = response.data;
-        var todosDiv = document.getElementById('todos');
-
-        todos.forEach(function (todo) {
-            var todoDiv = document.createElement('div');
-            todoDiv.innerHTML = `
-                <h3>${todo.shortName}</h3>
-                <p>${todo.description}</p>
-                <p>Created At: ${todo.createdAt}</p>
-            `;
-
-            todosDiv.appendChild(todoDiv);
-        });
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
-
 // Xử lý sự kiện khi người dùng gửi form để thêm todo mới
-var addTodoForm = document.getElementById('addTodoForm');
+const addTodoForm = document.getElementById('addTodoForm');
 
 addTodoForm.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -30,7 +7,6 @@ addTodoForm.addEventListener('submit', function (event) {
     var shortNameInput = document.getElementById('shortName');
     var descriptionInput = document.getElementById('description');
     var currentDateTime = moment().format("YYYY-MM-DD HH:mm:ss");
-
 
     var newTodo = {
         shortName: shortNameInput.value,
@@ -46,18 +22,18 @@ addTodoForm.addEventListener('submit', function (event) {
             var todosDiv = document.getElementById('todos');
 
             var todoDiv = document.createElement('div');
+            todoDiv.className = `todo-${todo.id}`;
             todoDiv.innerHTML = `
-                <h3>${todo.shortName}</h3>
+                <input type="checkbox" id="todo-${todo.id}" />  
+                <h3><i>${todo.id}</i>${todo.shortName}</h3>
                 <p>${todo.description}</p>
                 <p>Created At: ${todo.createdAt}</p>
             `;
-
             todosDiv.appendChild(todoDiv);
 
             // Reset các trường input sau khi thêm todo thành công
             shortNameInput.value = '';
             descriptionInput.value = '';
-            createdAtInput.value = '';
         })
         .catch(function (error) {
             console.log(error);

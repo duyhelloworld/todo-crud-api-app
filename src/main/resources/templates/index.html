@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Todo App</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
 </head>
 <body>
     <h1>Todo App</h1>
@@ -19,13 +19,35 @@
         <input type="text" id="shortName" name="shortName" required><br><br>
 
         <label for="description">Description:</label>
-        <input type="text" id="description" name="description" required><br><br>
-
-        <input type="text" id="createdAt" name="createdAt" required hidden>
+        <input type="text" id="description" name="description"><br><br>
 
         <input type="submit" value="Add Todo">
     </form>
 
-    <script src="/src/main/resources/static/js/app.js"></script>
+    <form id="findTodo">
+        <input type="search" name="id" id="id" placeholder="Điền id của todo">
+        <input type="submit" value="Find">
+    </form>
+
+    <form id="deleteById">
+
+    </form>
+
+    <form id="updateTodo">
+        <label for="shortName">Short Name:</label>
+        <input type="text" id="shortName" name="shortName" required><br><br>
+        
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description"><br><br>
+        
+        <label for="createAt">Create At:</label>
+        <input type="datetime" id="createAt" name="createAt"><br><br>
+
+        <input type="submit" value="Save">
+    </form>
+
+    <script th:src="@{/js/get_n_find.js}" type="text/javascript"></script>
+    <script th:src="@{/js/create.js}" type="text/javascript"></script>
+    <script th:src="@{/js/update.js}" type="text/javascript"></script>
 </body>
 </html>
